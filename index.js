@@ -6,8 +6,9 @@
  * @param {string} input - The input string.
  * @returns {string} - The formatted string.
  */
-function capitalizeWords(input) {
-    return input.replace(/\b\w/g, char => char.toUpperCase());
+function capitalizeWords(input) 
+{   if (!input) return '';
+    return input.replace(/(^|\s)\S/g, char => char.toUpperCase());
 }
 
 /**
@@ -16,7 +17,7 @@ function capitalizeWords(input) {
  * @returns {Array} - An array of active user objects.
  */
 function filterActiveUsers(users) {
-    return users.filter(user => user.isActive);
+    return users.filter(user => user.active === true);
 }
 
 /**
@@ -26,6 +27,7 @@ function filterActiveUsers(users) {
  * @returns {string} - The log message.
  */
 function logAction(action, username) {
+    console.log(`Action logged: ${action}`);    
     const timestamp = new Date().toISOString();
     return `User ${username} performed ${action} at ${timestamp}`;
 }
